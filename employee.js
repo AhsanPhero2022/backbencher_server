@@ -40,6 +40,20 @@ const getEmployees = (req, res) => {
   });
 };
 
+const getEmployeeById = (req, res) => {
+  let id = parseInt(req.params.id);
+
+  pool.query("SELECT * FROM employees WHERE id=$1", [id], (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    res.json({
+      data: result.rows,
+    });
+  });
+};
+
 const updateEmployee = (req, res) => {
   let id = parseInt(req.params.id);
   const { name, title, description, company, image } = req.body;
@@ -75,6 +89,7 @@ const deleteEmployee = (req, res) => {
 module.exports = {
   createEmployee,
   getEmployees,
+  getEmployeeById,
   updateEmployee,
   updateEmployee,
   deleteEmployee,
