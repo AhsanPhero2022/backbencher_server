@@ -12,3 +12,7 @@ app.use(express.json());
 app.post("/add", dbEmp.createEmployee);
 app.get("/all", dbEmp.getEmployees);
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
+app.post("/add", dbEmp.createEmployee);
+app.get("/all", dbEmp.getEmployees);
+app.put("/:id", dbEmp.updateEmployee);
+app.delete("/:id", dbEmp.deleteEmployee);
