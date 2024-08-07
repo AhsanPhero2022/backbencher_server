@@ -9,11 +9,11 @@ const pool = new Pool({
 });
 
 const createEmployee = (req, res) => {
-  const { name, email, image } = req.body;
+  const { name, title, description, company, image } = req.body;
 
   pool.query(
-    "INSERT INTO employees (name,email,image) VALUES ($1,$2,$3) RETURNING * ",
-    [name, email, image],
+    "INSERT INTO employees (name, title, description, company, image) VALUES ($1,$2,$3,$4,$5) RETURNING * ",
+    [name, title, description, company, image],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -42,11 +42,11 @@ const getEmployees = (req, res) => {
 
 const updateEmployee = (req, res) => {
   let id = parseInt(req.params.id);
-  const { name, email, image } = req.body;
+  const { name, title, description, company, image } = req.body;
 
   pool.query(
-    "UPDATE employees  SET name =$1 ,email = $2, image = $3 WHERE id=$4",
-    [name, email, image, id],
+    "UPDATE employees  SET name =$1 ,title = $2, description = $3, company = $4, image = $5 WHERE id=$6",
+    [name, title, description, company, image, id],
     (err, result) => {
       if (err) {
         throw err;
