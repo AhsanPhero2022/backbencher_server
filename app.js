@@ -19,3 +19,11 @@ app.get("/all", dbEmp.getEmployees);
 app.get("/:id", dbEmp.getEmployeeById);
 app.put("/:id", dbEmp.updateEmployee);
 app.delete("/:id", dbEmp.deleteEmployee);
+
+app.get("/", (req, res) => {
+  const serverStatus = {
+    message: "Server is running smoothly",
+    timestamp: new Date(),
+  };
+  res.json(serverStatus);
+});
