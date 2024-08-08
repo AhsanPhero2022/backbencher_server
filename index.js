@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const dbEmp = require("./employee");
 const cors = require("cors");
+
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, req) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
