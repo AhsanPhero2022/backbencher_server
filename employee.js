@@ -8,6 +8,7 @@ const pool = new Pool({
   port: 5432,
 });
 
+
 const createEmployee = async (req, res) => {
   const { name, title, description, company, image } = req.body;
 
