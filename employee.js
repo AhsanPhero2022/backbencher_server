@@ -8,14 +8,13 @@ const pool = new Pool({
   port: 5432,
 });
 
-
 const createEmployee = async (req, res) => {
-  const { name, title, description, company, image } = req.body;
+  const { id, name, title, description, company, image } = req.body;
 
   try {
     const result = await pool.query(
-      "INSERT INTO employees (name, title, description, company, image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [name, title, description, company, image]
+      "INSERT INTO employees (id, name, title, description, company, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [id, name, title, description, company, image]
     );
     res.status(200).json({
       msg: "Data created successfully",
@@ -39,6 +38,10 @@ const getEmployees = async (req, res) => {
 
 const getEmployeeById = async (req, res) => {
   const id = parseInt(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "Invalid Employee ID" });
+  }
 
   try {
     const result = await pool.query("SELECT * FROM employees WHERE id=$1", [
