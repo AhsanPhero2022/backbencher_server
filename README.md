@@ -8,7 +8,7 @@ The server-side application is designed to interact with a PostgreSQL database, 
 
 ## Live Demo
 
-[Check out the live version of the Quiz App](https://backbencher-server.vercel.app)
+[Check out the live version of the Backbencher server](https://backbencher-server.vercel.app)
 
 ### Features
 
