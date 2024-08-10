@@ -24,14 +24,16 @@ The server-side application is designed to interact with a PostgreSQL database, 
    ```bash
    git clone https://github.com/AhsanPhero2022/backbencher_server
    cd your-repository
+   npm install
+   npm run dev
    ```
 
-   npm install
+### Env file :
 
-### Env file example:
-
-DB_USER = your_db_user
-DB_HOST = your_db_host
-DB_NAME = your_db_name
-DB_PASS = your_db_password
-DB_PORT = 5432
+```
+DB_USER=postgres.jwitffcdcprkiizrpkbf
+PORT=6543
+DB_HOST=aws-0-ap-southeast-1.pooler.supabase.com
+DB_NAME=postgres
+DB_PASS=FRfoFaAlNw2rUHEm
+```
